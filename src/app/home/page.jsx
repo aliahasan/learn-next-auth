@@ -12,14 +12,19 @@ const HomPage = async () => {
   return (
     <div className="flex flex-col items-center m-4">
       <h1 className="text-3x my-2">Hello {session?.user?.name}!</h1>
-      <Image
-        src={session?.user?.image}
-        alt="image"
-        width={72}
-        height={72}
-        className="rounded-full"
-      ></Image>
-      <Logout></Logout>
+      {session?.user?.image ? (
+        <Image
+          src={session?.user?.image}
+          alt="user image"
+          width={72}
+          height={72}
+          className="rounded-full"
+          priority={true}  
+        />
+      ) : (
+        <div className="w-10 h-10 rounded-full bg-gray-400"></div>
+      )}
+      <Logout />
     </div>
   );
 };
